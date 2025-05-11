@@ -11,7 +11,7 @@ class Parser:
     def parse(self):
         self.S()
         if self.pos != len(self.tokens):
-            raise SyntaxError(f"Extra input at position {self.pos}")
+            raise SyntaxError(f"Invalid String!")
         self.derivation.append(''.join(self.tokens))  # Final string
 
     def S(self):
