@@ -60,7 +60,7 @@ class Parser:
         lines = [
             'digraph G {',
             '  rankdir=TB;',
-            '  node [shape=box, style=filled, fillcolor="#E0F7FA"];',
+            '  node [shape=circle, style=filled, fillcolor="#E0F7FA"];',
             '  edge [color="#00796B"];'
         ]
         for nid, label in self.nodes:
