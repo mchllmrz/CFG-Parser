@@ -10,6 +10,9 @@
 </head>
 <body>
   <h1>CFG Syntax Analyzer</h1>
+  <p>Language: Strings in the form aⁿbᵐcⁿ where n ≥ 0 and m ≥ 0.<br>
+    G = { (S,B), (a,b,c), S, (S → aSc | B , B → bB | ɛ) }
+    </p>
   <textarea id="inputStr" placeholder="Enter string (e.g. aabcc)"></textarea><br>
   <button onclick="runParse()">Parse</button>
 
