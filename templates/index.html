@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>CFG Syntax Analyzer</title>
-  <!-- Viz.js v2 from UNPKG -->
+  <!-- Importing Viz.js (version 2.1.2) and its rendering engine -->
+  <!-- These libraries are used to render parse trees as graphs in the browser -->
   <script src="https://unpkg.com/viz.js@2.1.2/viz.js"></script>
   <script src="https://unpkg.com/viz.js@2.1.2/full.render.js"></script>
   <link rel="stylesheet" href="static\style.css">
 </head>
 <body>
   <h1>CFG Syntax Analyzer</h1>
-  <p>Language: Strings in the form aⁿbᵐcⁿ where n ≥ 0 and m ≥ 0.<br>
+  <p>Language: Strings in the form aⁿbᵐcⁿ where n ≥ 0 and m ≥ 0.<br> 
+    <br>   
     G = { (S,B), (a,b,c), S, (S → aSc | B , B → bB | ɛ) }
     </p>
+  <!-- Textarea for user to input the string to be parsed -->
   <textarea id="inputStr" placeholder="Enter string (e.g. aabcc)"></textarea><br>
   <button onclick="runParse()">Parse</button>
 

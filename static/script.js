@@ -1,5 +1,6 @@
-const viz = new Viz();
+const viz = new Viz(); // Create a new instance of Viz.js to render graphs
 
+//* Renders the parse tree using a DOT language string
 function renderTree(dot) {
   viz.renderSVGElement(dot)
     .then(svg => {
@@ -15,16 +16,21 @@ function renderTree(dot) {
     });
 }
 
+// Function to handle the parsing of the input string
+// This function is called when the user clicks the "Parse" button
 function runParse() {
+  //get the input string from the text area
   const input = document.getElementById('inputStr').value.trim();
+
+  //clear previous results
   document.getElementById('output').textContent = '';
   document.getElementById('graph').innerHTML = '';
   document.getElementById('derivations').innerHTML = 'Parsing...';
-
-  fetch('/parse', {
+  //send post request to the server with the input string
+  fetch('/parse', { 
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ input })
+    body: JSON.stringify({ input }) //send the input string as json
   })
   .then(res => res.json())
   .then(data => {
@@ -36,13 +42,13 @@ function runParse() {
         data.derivations.map((step, i) => (i === 0 ? step : "→ " + step)).join("\n") +
         "</pre>";
       document.getElementById('derivations').innerHTML = derivHTML;
-    } else {
+    } else { // Handle parsing errors
       document.getElementById('output').textContent = `❌ ${data.error}`;
       document.getElementById('derivations').innerHTML = '';
       document.getElementById('graph').innerHTML = '';
     }
   })
-  .catch(err => {
+  .catch(err => { // Handle network errors
     document.getElementById('output').textContent = `⚠️ Network error: ${err.message}`;
     document.getElementById('derivations').innerHTML = '';
     document.getElementById('graph').innerHTML = '';
